@@ -1,6 +1,6 @@
 {
   "name": "git-meta-up",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Resolve Git remote URLs to their hosting provider and build web links for repositories, branches, tags, commits and comparisons.",
   "keywords": [
     "azure-devops",
