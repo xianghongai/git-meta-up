@@ -51,9 +51,9 @@
     "format": "oxfmt",
     "format:check": "oxfmt --check",
     "lint": "oxlint src test playground/src",
-    "playground:build": "pnpm run build && pnpm --filter git-meta-up-playground build",
-    "playground:dev": "pnpm --filter git-meta-up-playground dev",
-    "playground:preview": "pnpm --filter git-meta-up-playground preview",
+    "site:build": "pnpm run build && pnpm --filter git-meta-up-playground build",
+    "site:dev": "pnpm --filter git-meta-up-playground dev",
+    "site:preview": "pnpm --filter git-meta-up-playground preview",
     "prepack": "pnpm run check-types && pnpm run lint && pnpm run test && pnpm run build",
     "release": "changeset publish",
     "test": "vitest run"

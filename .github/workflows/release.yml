@@ -1,7 +1,7 @@
 # Changesets flow: pushes to main with pending changesets open or update a version PR;
-# merging that PR publishes `git-meta-up` to npm, tags the release and creates a GitHub release.
+# merging that PR publishes the changed packages to npm, tags the release and creates a GitHub release.
 # `pnpm run release` runs `changeset publish`, whose `prepack` runs the type check, lint, tests and build.
-# Publishing authenticates through npm trusted publishing (OIDC): the package on npmjs.com must list
+# Publishing authenticates through npm trusted publishing (OIDC): each package on npmjs.com must list
 # this repository and workflow as a trusted publisher; no npm token is stored.
 on:
   push:
@@ -9,6 +9,7 @@ on:
       - main
 
 name: Release
+run-name: 'Release: ${{ github.ref_name }}'
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 

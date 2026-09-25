@@ -25,10 +25,11 @@
 - 代码注释与测试描述用英文。示例与测试数据可以使用知名的公开开源仓库，便于辨认平台；其余使用 `example.com`、`owner/repo` 这类占位值，不写入个人或私有仓库、账号、内网域名与 Token。
 - 版本与变更日志用 Changesets：对包有用户可见的改动时运行 `pnpm changeset` 记录变更与 semver 级别，不手改 `package.json` 的版本或 `CHANGELOG.md`。`pnpm-workspace.yaml` 显式列出根目录 `.`，否则 Changesets 找不到根目录的包；演示页是私有包，不参与版本与发布。
 - 工作流：`ci.yml` 在 push 与 PR 时检查（格式、lint、类型、测试、演示页构建）；`release.yml` 用 `changesets/action` 开版本 PR，合并后以 npm 可信发布（OIDC）+ provenance 发布并打 Tag；`pages.yml` 部署演示页。
+- 工作流不写项目专属命令，只调用根 `package.json` 中约定的脚本：`format:check`、`lint`、`check-types`、`test`、`release`、`site:build`（CI 中用 `--if-present`，没有演示页的包可以不提供）。唯一的项目专属设置是 `pages.yml` 顶部的 `SITE_DIR`，即 `site:build` 的输出目录。
 - 不执行提交、推送、发布或部署；GitHub Pages 与 npm 可信发布由维护者在平台上配置。
 
 ## 验证
 
-- `pnpm check-types`（会先构建包再检查演示页）、`pnpm lint`、`pnpm format:check`、`pnpm test`、`pnpm build`、`pnpm playground:build`。
+- `pnpm check-types`（会先构建包再检查演示页）、`pnpm lint`、`pnpm format:check`、`pnpm test`、`pnpm build`、`pnpm site:build`。
 - 测试以纯函数表驱动为主：地址写法、页面识别、各平台链接、编码、注册优先级、凭据去除。
-- 演示页的改动用 `pnpm playground:dev` 或 `pnpm playground:build && pnpm playground:preview` 在浏览器中检查，包括深色与浅色主题、窄屏布局。
+- 演示页的改动用 `pnpm site:dev` 或 `pnpm site:build && pnpm site:preview` 在浏览器中检查，包括深色与浅色主题、窄屏布局。

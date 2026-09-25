@@ -1,6 +1,6 @@
 # ![](playground/public/icon.svg) git-meta-up
 
-[English](README.md) | 简体中文
+[English](README.md) | 简体中文 | [在线演示](https://xianghongai.github.io/git-meta-up/)
 
 从 Git 远程地址识别托管平台，并生成网页链接与 Clone 地址：仓库、组织、分支、Tag、提交、对比，以及文件、RAW、Blame 与文件历史。
 
@@ -164,11 +164,11 @@ sanitizeGitUrl('https://oauth2:token@gitlab.com/group/repo.git');
 
 ## 演示页
 
-演示页可以编辑自托管配置、解析地址，并在浏览器中保存解析历史：
+[演示页](https://xianghongai.github.io/git-meta-up/)可以编辑自托管配置、解析地址，并在浏览器中保存解析历史。在本地运行：
 
 ```sh
 pnpm install
-pnpm playground:dev
+pnpm site:dev
 ```
 
 `.github/workflows/pages.yml` 负责部署到 GitHub Pages。

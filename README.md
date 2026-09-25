@@ -1,6 +1,6 @@
 # ![](playground/public/icon.svg) git-meta-up
 
-English | [简体中文](README.zh-CN.md)
+English | [简体中文](README.zh-CN.md) | [Playground](https://xianghongai.github.io/git-meta-up/)
 
 Resolve a Git remote URL to its hosting provider and build web links and clone URLs: repository, owner, branches, tags, commits, comparisons, and a file's page, raw content, blame and history.
 
@@ -164,11 +164,11 @@ A parsed `GitRemote` is plain JSON (`provider`, `transport`, `host`, `origin`, `
 
 ## Playground
 
-The playground parses a URL with an editable remote config and keeps a history in your browser:
+The [playground](https://xianghongai.github.io/git-meta-up/) parses a URL with an editable remote config and keeps a history in your browser. To run it locally:
 
 ```sh
 pnpm install
-pnpm playground:dev
+pnpm site:dev
 ```
 
 `.github/workflows/pages.yml` deploys it to GitHub Pages.

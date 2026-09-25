@@ -5,8 +5,12 @@ on:
 
   workflow_dispatch:
 
-name: Deploy playground to GitHub Pages
+name: GitHub Pages
 run-name: 'Release Pages: ${{ github.ref_name }}'
+
+# The only project-specific setting: where `site:build` writes the site.
+env:
+  SITE_DIR: playground/dist
 
 permissions:
   contents: read
@@ -31,17 +35,17 @@ jobs:
       - name: Install the dependencies
         run: pnpm install --frozen-lockfile --ignore-scripts
 
-      # Builds the package first; the playground runs the built dist, as a consumer would.
-      - name: Build the package and the playground
-        run: pnpm run playground:build
+      # Builds the packages first, so the site runs the built output, as a consumer would.
+      - name: Build the site
+        run: pnpm run site:build
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v6
 
-      - name: Upload the playground
+      - name: Upload the site
         uses: actions/upload-pages-artifact@v5
         with:
-          path: playground/dist
+          path: ${{ env.SITE_DIR }}
 
   deploy:
     needs: build

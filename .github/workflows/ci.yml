@@ -8,6 +8,7 @@ on:
   workflow_dispatch:
 
 name: CI
+run-name: 'CI: ${{ github.head_ref || github.ref_name }}'
 
 permissions:
   contents: read
@@ -32,12 +33,12 @@ jobs:
       - name: Lint
         run: pnpm run lint
 
-      # Builds the package first, then checks the playground against its published types.
+      # Builds the packages first, so dependents are checked against the published types.
       - name: Type check
         run: pnpm run check-types
 
       - name: Test
         run: pnpm run test
 
-      - name: Build the playground
-        run: pnpm --filter git-meta-up-playground run build
+      - name: Build the site
+        run: pnpm run --if-present site:build
