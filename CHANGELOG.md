@@ -2,6 +2,17 @@
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## 0.1.2
+
+### Patch Changes
+
+- [`f13ae9c`](https://github.com/xianghongai/git-meta-up/commit/f13ae9c6afb245c143e1417588ab599d80b394f3) Thanks [@xianghongai](https://github.com/xianghongai)! - Link the online playground from the README and make the CI/CD workflows reusable across packages.
+
+  - Link the playground on GitHub Pages at the top of the README and in its Playground section.
+  - Rename the `playground:*` scripts to `site:build`, `site:dev` and `site:preview`.
+  - Workflows no longer name this package: they call the conventional root scripts (`format:check`, `lint`, `check-types`, `test`, `release`, `site:build`), CI skips the site build when `site:build` is absent, and the site output directory is set once through `SITE_DIR` in `pages.yml`.
+  - Give the workflows generic names and run names.
+
 ## 0.1.1
 
 ### Patch Changes
