@@ -1,0 +1,4 @@
+# The root is the published package; list it so Changesets sees it next to the playground.
+packages:
+  - '.'
+  - playground

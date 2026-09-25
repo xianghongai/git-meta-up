@@ -1,0 +1,23 @@
+{
+  "arrowParens": "always",
+  "bracketSpacing": true,
+  "endOfLine": "lf",
+  "insertFinalNewline": true,
+  "printWidth": 120,
+  "proseWrap": "preserve",
+  "quoteProps": "as-needed",
+  "semi": true,
+  "singleQuote": true,
+  "sortPackageJson": true,
+  "tabWidth": 2,
+  "trailingComma": "es5",
+  "useTabs": false,
+  "ignorePatterns": [
+    "dist/**",
+    "playground/dist/**",
+    "node_modules/**",
+    "pnpm-lock.yaml",
+    "LICENSE",
+    "playground/src/components/ui/**"
+  ]
+}

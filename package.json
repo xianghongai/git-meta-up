@@ -1,0 +1,76 @@
+{
+  "name": "git-meta-up",
+  "version": "0.1.0",
+  "description": "Resolve Git remote URLs to their hosting provider and build web links for repositories, branches, tags, commits and comparisons.",
+  "keywords": [
+    "azure-devops",
+    "bitbucket",
+    "cnb",
+    "codeup",
+    "git",
+    "git-url",
+    "gitea",
+    "gitee",
+    "github",
+    "gitlab",
+    "remote"
+  ],
+  "homepage": "https://xianghongai.github.io/git-meta-up/",
+  "bugs": {
+    "url": "https://github.com/xianghongai/git-meta-up/issues"
+  },
+  "license": "MIT",
+  "author": "Nicholas Hsiang",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xianghongai/git-meta-up.git"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "README.zh-CN.md",
+    "LICENSE"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "changeset": "changeset",
+    "check-types": "tsc --noEmit && pnpm run build && pnpm --filter git-meta-up-playground check-types",
+    "format": "oxfmt",
+    "format:check": "oxfmt --check",
+    "lint": "oxlint src test playground/src",
+    "playground:build": "pnpm run build && pnpm --filter git-meta-up-playground build",
+    "playground:dev": "pnpm --filter git-meta-up-playground dev",
+    "playground:preview": "pnpm --filter git-meta-up-playground preview",
+    "prepack": "pnpm run check-types && pnpm run lint && pnpm run test && pnpm run build",
+    "release": "changeset publish",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "path-to-regexp": "^8.4.2"
+  },
+  "devDependencies": {
+    "@changesets/changelog-github": "^1.0.1",
+    "@changesets/cli": "^3.0.3",
+    "oxfmt": "^0.65.0",
+    "oxlint": "^1.85.0",
+    "typescript": "^7.0.2",
+    "vitest": "^4.1.11"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "packageManager": "pnpm@11.25.0"
+}
