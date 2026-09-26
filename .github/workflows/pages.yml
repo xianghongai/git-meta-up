@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 name: GitHub Pages
-run-name: 'Release Pages: ${{ github.ref_name }}'
+run-name: 'Deploy Pages: ${{ github.ref_name }}'
 
 # The only project-specific setting: where `site:build` writes the site.
 env:

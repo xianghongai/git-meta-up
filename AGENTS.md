@@ -26,6 +26,7 @@
 - 版本与变更日志用 Changesets：对包有用户可见的改动时运行 `pnpm changeset` 记录变更与 semver 级别，不手改 `package.json` 的版本或 `CHANGELOG.md`。`pnpm-workspace.yaml` 显式列出根目录 `.`，否则 Changesets 找不到根目录的包；演示页是私有包，不参与版本与发布。
 - 工作流：`ci.yml` 在 push 与 PR 时检查（格式、lint、类型、测试、演示页构建）；`release.yml` 用 `changesets/action` 开版本 PR，合并后以 npm 可信发布（OIDC）+ provenance 发布并打 Tag；`pages.yml` 部署演示页。
 - 工作流不写项目专属命令，只调用根 `package.json` 中约定的脚本：`format:check`、`lint`、`check-types`、`test`、`release`、`site:build`（CI 中用 `--if-present`，没有演示页的包可以不提供）。唯一的项目专属设置是 `pages.yml` 顶部的 `SITE_DIR`，即 `site:build` 的输出目录。
+- 工作流的 `run-name` 用 `<主功能> <对象>: <引用>`，让 Actions 列表一眼看出每次运行做什么：`CI Check`（检查）、`Release npm`（发布 npm）、`Deploy Pages`（部署演示页）、`Release Extension`（发布 VS Code 扩展）；新增工作流照此命名。
 - 不执行提交、推送、发布或部署；GitHub Pages 与 npm 可信发布由维护者在平台上配置。
 
 ## 验证
